@@ -2,25 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_call"
-            android:icon="@drawable/touxiang"
-            android:title="Call"/>
+            android:id="@+id/nav_myinfo"
+            android:icon="@drawable/myself"
+            android:title="个人信息"/>
         <item
-            android:id="@+id/nav_friends"
-            android:icon="@drawable/touxiang"
-            android:title="Call"/>
+            android:id="@+id/nav_mycollection"
+            android:icon="@drawable/shoucang"
+            android:title="我的收藏"/>
         <item
             android:id="@+id/nav_location"
-            android:icon="@drawable/touxiang"
-            android:title="Call"/>
+            android:icon="@drawable/news"
+            android:title="消息通知"/>
         <item
-            android:id="@+id/nav_mail"
-            android:icon="@drawable/touxiang"
-            android:title="Call"/>
-        <item
-            android:id="@+id/nav_task"
-            android:icon="@drawable/touxiang"
-            android:title="Call"/>
+            android:id="@+id/nav_back"
+            android:icon="@drawable/tuichu"
+            android:title="切换账号"/>
 
     </group>
 </menu>

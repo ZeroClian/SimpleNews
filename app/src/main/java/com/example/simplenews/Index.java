@@ -45,15 +45,22 @@ public class Index extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar!=null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.tou);
+            actionBar.setHomeAsUpIndicator(R.mipmap.daohang);
         }
 
+        //侧滑栏内事件点击
         final NavigationView navView =(NavigationView) findViewById(R.id.nav_view);
-        navView.setCheckedItem(R.id.nav_call);
+        //navView.setCheckedItem(R.id.nav_call);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mDrawerLayout.closeDrawers();
+                switch (item.getItemId()){
+                    case R.id.nav_back:
+                        finish();
+                        break;
+                    default:
+                        mDrawerLayout.closeDrawers();
+                }
                 return true;
             }
         });
