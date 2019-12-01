@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.example.simplenews.gson.Data;
 import com.example.simplenews.gson.News;
+import com.example.simplenews.util.NewsAdapter;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;

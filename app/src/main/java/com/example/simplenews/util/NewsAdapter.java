@@ -1,4 +1,4 @@
-package com.example.simplenews;
+package com.example.simplenews.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.simplenews.R;
 import com.example.simplenews.gson.Data;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
