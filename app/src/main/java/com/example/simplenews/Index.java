@@ -47,14 +47,15 @@ public class Index extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         //接收
         main_name = getIntent().getStringExtra("username");
         //同步用户名
         tvName = (TextView) findViewById(R.id.nav_header_name);
         tvName.setText(new String(String.format(getResources().getString(R.string.nav_header_name),main_name)));
 
+        //主布局初始化
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar!=null){

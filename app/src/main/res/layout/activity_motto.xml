@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:id="@+id/activity_motto"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/motto_drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.simplenews.Motto">
+    android:layout_height="match_parent">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/motto_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"/>
+        </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:paddingTop="60dp"
+        android:background="@drawable/main_background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/new_motto"
+            android:textColor="@color/black"
+            android:gravity="top"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="300dp"
+            android:textSize="18dp"
+            android:layout_height="200dp"
+            android:background="@drawable/textview_round_border"/>
+        <Button
+            android:id="@+id/alter_motto"
+            android:text="更改"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/textview_round_border"
+            android:layout_gravity="end"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/motto_back"
-        android:background="@drawable/back"
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
-    <EditText
-        android:id="@+id/new_motto"
-        android:textColor="@color/black"
-        android:gravity="top"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="300dp"
-        android:textSize="18dp"
-        android:layout_height="200dp"
-        android:background="@drawable/textview_round_border"/>
-    <Button
-        android:id="@+id/alter_motto"
-        android:text="更改"
-        android:layout_width="60dp"
-        android:layout_height="35dp"
-        android:background="@drawable/textview_round_border"
-        android:layout_gravity="end"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+    </android.support.v4.widget.DrawerLayout>

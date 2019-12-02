@@ -21,6 +21,7 @@
                 app:layout_scrollFlags="scroll|enterAlways|snap"/>
         </android.support.design.widget.AppBarLayout>
 
+        <!--下拉更新-->
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"

@@ -4,10 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +26,7 @@ import java.util.List;
 
 public class Infomation extends AppCompatActivity {
 
+    private DrawerLayout infoDrawer;
     final String[] gender = new String[]{"男","女"};
     final String[] city = new String[]{
             "广州市","深圳市","清远市","韶关市","河源市","梅州市","潮州市","肇庆市",
@@ -39,6 +44,15 @@ public class Infomation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infomation);
+
+        Toolbar infoToolbar = (Toolbar)findViewById(R.id.info_toolbar);
+        setSupportActionBar(infoToolbar);
+        infoDrawer = (DrawerLayout) findViewById(R.id.info_drawer_layout);
+        ActionBar infoActionBar = getSupportActionBar();
+        if (infoActionBar!=null){
+            infoActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         //初始化页面信息
         info_user = getIntent().getStringExtra("info_user");
         info_name = (TextView) findViewById(R.id.info_name);
@@ -56,14 +70,6 @@ public class Infomation extends AppCompatActivity {
                 info_motto.setText(user.getMotto());
             }
         }
-        //返回主界面
-        Button back = (Button) findViewById(R.id.info_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         //设置性别
         info_gender.setOnClickListener(new View.OnClickListener() {
@@ -121,5 +127,14 @@ public class Infomation extends AppCompatActivity {
                 info_motto.setText(re_mottos.getMotto());
             }
         }
+    }
+    //返回
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
