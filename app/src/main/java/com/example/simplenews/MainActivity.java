@@ -12,7 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.simplenews.gson.User;
 import com.example.simplenews.util.MyDatabaseHelper;
+
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private EditText name;
@@ -35,24 +40,35 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteDatabase db = dbHelper.getReadableDatabase();
-                Cursor cursor = db.query("user",null,null,null,null,null,null);
+//                SQLiteDatabase db = dbHelper.getReadableDatabase();
+//                Cursor cursor = db.query("user",null,null,null,null,null,null);
+                List<User> users = DataSupport.select("name","password").find(User.class);
                 if (!(TextUtils.isEmpty(name.getText().toString()))&&
                         !(TextUtils.isEmpty(pass.getText().toString()))){
-                    if (cursor.moveToFirst()) {
-                        do {
-                            String dbname = cursor.getString(cursor.getColumnIndex("name"));
-                            String dbpassword = cursor.getString(cursor.getColumnIndex("password"));
-                            if (name.getText().toString().equals(dbname) && pass.getText().toString().equals(dbpassword)) {
-                                Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                                flag = false;
-                                Intent intent = new Intent(MainActivity.this,Index.class);
-                                intent.putExtra("username",name.getText().toString());
-                                startActivity(intent);
-                            }
-                        } while (cursor.moveToNext());
+                    for (User user:users){
+                        if (name.getText().toString().equals(user.getName())
+                                && pass.getText().toString().equals(user.getPassword())){
+                            Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                            flag = false;
+                            Intent intent = new Intent(MainActivity.this,Index.class);
+                            intent.putExtra("username",name.getText().toString());
+                            startActivity(intent);
+                        }
                     }
-                    cursor.close();
+//                    if (cursor.moveToFirst()) {
+//                        do {
+//                            String dbname = cursor.getString(cursor.getColumnIndex("name"));
+//                            String dbpassword = cursor.getString(cursor.getColumnIndex("password"));
+//                            if (name.getText().toString().equals(dbname) && pass.getText().toString().equals(dbpassword)) {
+//                                Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+//                                flag = false;
+//                                Intent intent = new Intent(MainActivity.this,Index.class);
+//                                intent.putExtra("username",name.getText().toString());
+//                                startActivity(intent);
+//                            }
+//                        } while (cursor.moveToNext());
+//                    }
+//                    cursor.close();
                     if (flag){
                         Toast.makeText(MainActivity.this, "账户或密码错误！", Toast.LENGTH_SHORT).show();
                     }

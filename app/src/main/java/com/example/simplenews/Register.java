@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.simplenews.gson.User;
 import com.example.simplenews.util.MyDatabaseHelper;
 
 public class Register extends AppCompatActivity {
@@ -29,13 +30,13 @@ public class Register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SQLiteDatabase db = dbHelperRegister.getWritableDatabase();
-                ContentValues values = new ContentValues();
+                User user = new User();
                 //开始组装数据
-                values.put("name",registerName.getText().toString());
-                values.put("mail",registerMail.getText().toString());
-                values.put("password",registerPass.getText().toString());
-                db.insert("user",null,values);
+                user.setName(registerName.getText().toString());
+                user.setMail(registerMail.getText().toString());
+                user.setPassword(registerPass.getText().toString());
+                //保存数据
+                user.save();
                 Toast.makeText(Register.this, "注册成功", Toast.LENGTH_SHORT).show();
                 finish();
             }

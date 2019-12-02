@@ -71,6 +71,7 @@ public class Index extends AppCompatActivity {
                     case R.id.nav_myinfo:
                         mDrawerLayout.closeDrawers();
                         Intent info = new Intent(Index.this,Infomation.class);
+                        info.putExtra("info_user",main_name);
                         startActivity(info);
                         break;
                     case R.id.nav_mycollection:
