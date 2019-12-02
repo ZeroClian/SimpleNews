@@ -103,11 +103,16 @@ public class Index extends AppCompatActivity {
         dataList = new ArrayList<Data>();
         adapter = new NewsAdapter(this, dataList);
         lvNews.setAdapter(adapter);
+        //点击列表项跳转页面
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Data data = dataList.get(position);
                 Intent intent = new Intent(Index.this, BrowseNewsActivity.class);
+                intent.putExtra("title",data.getTitle());
+                intent.putExtra("author_name",data.getAuthorName());
+                intent.putExtra("date",data.getDate());
+                intent.putExtra("pic_url",data.getThumbnail_pic_s());
                 intent.putExtra("content_url", data.getUrl());
                 startActivity(intent);
             }
@@ -132,7 +137,7 @@ public class Index extends AppCompatActivity {
                 try {
                     OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("http://v.juhe.cn/toutiao/index?type=top&key=468a538795ca302846f994e7559df8a7")
+                            .url("http://v.juhe.cn/toutiao/index?type=top&key=b646373d5b1b0d7628c7ae1bfae514d0")
                             .build();
                     Response response = null;
                     response = client.newCall(request).execute();

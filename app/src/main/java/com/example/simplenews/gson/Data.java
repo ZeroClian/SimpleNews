@@ -2,11 +2,13 @@ package com.example.simplenews.gson;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Administrator on 2019/11/25.
  */
 
-public class Data {
+public class Data extends DataSupport {
 
         @SerializedName("uniquekey")
         private String uniqueKey;
@@ -24,7 +26,10 @@ public class Data {
 
         private String thumbnail_pic_s;
 
-        public Data(String uniqueKey, String title, String date, String category, String authorName, String url, String thumbnail_pic_s){
+    public Data() {
+    }
+
+    public Data(String uniqueKey, String title, String date, String category, String authorName, String url, String thumbnail_pic_s){
             setUniqueKey(uniqueKey);
             setTitle(title);
             setDate(date);

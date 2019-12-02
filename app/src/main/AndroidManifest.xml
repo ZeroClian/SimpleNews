@@ -22,7 +22,7 @@
         <activity android:name=".BrowseNewsActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Infomation" />
-        <activity android:name=".Motto"></activity>
+        <activity android:name=".Motto" />
     </application>
 
 </manifest>
