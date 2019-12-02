@@ -1,7 +1,5 @@
 package com.example.simplenews;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.simplenews.gson.User;
-import com.example.simplenews.util.MyDatabaseHelper;
 
 import org.litepal.crud.DataSupport;
 
