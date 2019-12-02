@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.simplenews.util.MyDatabaseHelper;
@@ -16,7 +17,6 @@ import com.example.simplenews.util.MyDatabaseHelper;
 public class MainActivity extends AppCompatActivity {
     private EditText name;
     private EditText pass;
-    private EditText mail;
     private MyDatabaseHelper dbHelper;
     private boolean flag = true;
 
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         //用户名和密码
         name = (EditText) findViewById(R.id.login_name);
         pass = (EditText) findViewById(R.id.login_password);
-
 
         //登陆验证
         Button login = (Button) findViewById(R.id.login_button);
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                                 flag = false;
                                 Intent intent = new Intent(MainActivity.this,Index.class);
+                                intent.putExtra("username",name.getText().toString());
                                 startActivity(intent);
                             }
                         } while (cursor.moveToNext());

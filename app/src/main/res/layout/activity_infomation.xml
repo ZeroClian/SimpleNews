@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_infomation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.simplenews.Infomation">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/info_back"
+            android:background="@drawable/back"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="头像"
+            android:textSize="20dp"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="70dp" />
+        <ImageView
+            android:src="@drawable/touxiang"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="70dp" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="用户名"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+            <TextView
+                android:text="ycl"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical|end"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="性别"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+
+            <TextView
+                android:id="@+id/info_gender"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical|end"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="邮箱"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+            <TextView
+                android:text="yucanlian@qq.com"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical|end"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <TextView
+                android:text="地区"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+            <TextView
+                android:text="广州"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical|end"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="个性签名"
+                android:textSize="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+            <TextView
+                android:id="@+id/info_motto"
+                android:text="好好打码"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical|end"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="70dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -28,7 +28,7 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="          用 户 号："
+            android:text="       用 户 号："
             android:textSize="15dp"/>
         <EditText
             android:id="@+id/login_name"
@@ -55,7 +55,7 @@
             android:layout_height="30dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="          密      码："
+            android:text="       密      码："
             android:textSize="15dp"/>
 
         <EditText

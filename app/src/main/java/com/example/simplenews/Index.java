@@ -1,5 +1,6 @@
 package com.example.simplenews;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -7,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.simplenews.gson.Data;
 import com.example.simplenews.gson.News;
@@ -35,12 +38,22 @@ public class Index extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private SwipeRefreshLayout swipeRefresh;
 
+    public TextView tvName;
+
+    //接收传递过来的用户名
+    private String main_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //接收
+        main_name = getIntent().getStringExtra("username");
+        //同步用户名
+        tvName = (TextView) findViewById(R.id.nav_header_name);
+        tvName.setText(new String(String.format(getResources().getString(R.string.nav_header_name),main_name)));
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBar actionBar = getSupportActionBar();
@@ -51,13 +64,29 @@ public class Index extends AppCompatActivity {
 
         //侧滑栏内事件点击
         final NavigationView navView =(NavigationView) findViewById(R.id.nav_view);
-        //navView.setCheckedItem(R.id.nav_call);
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case R.id.nav_myinfo:
+                        mDrawerLayout.closeDrawers();
+                        Intent info = new Intent(Index.this,Infomation.class);
+                        startActivity(info);
+                        break;
+                    case R.id.nav_mycollection:
+                        mDrawerLayout.closeDrawers();
+                        break;
+                    case R.id.nav_news:
+                        mDrawerLayout.closeDrawers();
+                        break;
                     case R.id.nav_back:
-                        finish();
+                        new AlertDialog.Builder(Index.this).setTitle("提示").setMessage("确定退出应用吗？")
+                                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        finish();
+                                    }
+                                }).setNeutralButton("取消",null).show();
                         break;
                     default:
                         mDrawerLayout.closeDrawers();
@@ -162,5 +191,4 @@ public class Index extends AppCompatActivity {
         }
         return true;
     }
-
 }

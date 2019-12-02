@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:padding="10dp"
+    android:padding="20dp"
     android:background="?attr/colorPrimary">
 
     <ImageView
@@ -12,21 +12,14 @@
         android:src="@drawable/touxiang"
         android:layout_centerInParent="true"/>
 
+
     <TextView
-        android:id="@+id/mail"
+        android:id="@+id/nav_header_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="yucanlian@qq.com"
+        android:layout_centerHorizontal="true"
+        android:text="@string/nav_header_name"
         android:textColor="#FFF"
-        android:textSize="14sp"/>
-
-    <TextView
-    android:id="@+id/username"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@id/mail"
-    android:text="yucanlian"
-    android:textColor="#FFF"
-    android:textSize="14sp"/>
+        android:textSize="16sp"/>
 </RelativeLayout>
