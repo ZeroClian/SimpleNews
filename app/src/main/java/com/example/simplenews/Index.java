@@ -78,7 +78,8 @@ public class Index extends AppCompatActivity {
                         mDrawerLayout.closeDrawers();
                         break;
                     case R.id.nav_news:
-                        mDrawerLayout.closeDrawers();
+                        new AlertDialog.Builder(Index.this).setTitle("通知").setMessage("该功能暂未实现!")
+                                .setPositiveButton("确定",null).show();
                         break;
                     case R.id.nav_back:
                         new AlertDialog.Builder(Index.this).setTitle("提示").setMessage("确定退出应用吗？")
