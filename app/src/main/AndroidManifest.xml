@@ -23,6 +23,7 @@
         <activity android:name=".Register" />
         <activity android:name=".Infomation" />
         <activity android:name=".Motto" />
+        <activity android:name=".Collection"></activity>
     </application>
 
 </manifest>

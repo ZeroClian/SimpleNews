@@ -14,6 +14,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.example.simplenews.gson.Colltects;
 import com.example.simplenews.gson.Data;
 
 import org.litepal.crud.DataSupport;
@@ -62,6 +63,8 @@ public class BrowseNewsActivity extends AppCompatActivity {
                     ColorStateList colorStateList = ContextCompat.getColorStateList(getApplicationContext(),R.color.colorPrimary);
                     FAB.setBackgroundTintList(colorStateList);
                     num++;
+                    Colltects coll = new Colltects(title,author_name,date,content_url);
+                    coll.save();
                     Toast.makeText(BrowseNewsActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
                 }else {
                     ColorStateList colorStateList = ContextCompat.getColorStateList(getApplicationContext(),R.color.colorAccent);

@@ -77,6 +77,8 @@ public class Index extends AppCompatActivity {
                         break;
                     case R.id.nav_mycollection:
                         mDrawerLayout.closeDrawers();
+                        Intent coll = new Intent(Index.this,Collection.class);
+                        startActivity(coll);
                         break;
                     case R.id.nav_news:
                         new AlertDialog.Builder(Index.this).setTitle("通知").setMessage("该功能暂未实现!")
