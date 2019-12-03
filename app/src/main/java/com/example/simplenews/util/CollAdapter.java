@@ -1,12 +1,14 @@
 package com.example.simplenews.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.simplenews.BrowseNewsActivity;
 import com.example.simplenews.R;
 import com.example.simplenews.gson.Colltects;
 
@@ -48,12 +50,14 @@ public class CollAdapter extends RecyclerView.Adapter<CollAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
-                Colltects people = mcolltectses.get(position);
-//                Intent intent = new  Intent(context,SecondActivity.class);
-//                intent.putExtra("name",people.getName());
-//                intent.putExtra("imageId",people.getImageId()+"");
-//                intent.putExtra("content",people.getContent());
-//                context.startActivity(intent);
+                Colltects news = mcolltectses.get(position);
+                Intent intent = new  Intent(context,BrowseNewsActivity.class);
+                intent.putExtra("title",news.getTitle());
+                intent.putExtra("author_name",news.getAuthor_name());
+                intent.putExtra("date",news.getDate());
+                intent.putExtra("content_url",news.getUrl());
+                intent.putExtra("num",2);
+                context.startActivity(intent);
             }
         });
         return  holder;

@@ -26,12 +26,13 @@ public class BrowseNewsActivity extends AppCompatActivity {
     private DrawerLayout browseDL;
     private WebView webView;
     private FloatingActionButton FAB;
-    private int num = 1;
+    private int num;
     private String title;
     private String date;
     private String author_name;
     private String pic_url;
     private String content_url;
+    private List<Colltects> news;
     private boolean flag = true;
 
     @Override
@@ -44,6 +45,7 @@ public class BrowseNewsActivity extends AppCompatActivity {
         date = getIntent().getStringExtra("date");
         pic_url = getIntent().getStringExtra("pic_url");
         content_url = getIntent().getStringExtra("content_url");
+        num = getIntent().getIntExtra("num",1);
         //初始化布局
         Toolbar toolbar = (Toolbar) findViewById(R.id.browse_toolbar);
         setSupportActionBar(toolbar);
@@ -54,8 +56,12 @@ public class BrowseNewsActivity extends AppCompatActivity {
         }
         webView = (WebView)findViewById(R.id.webView);
         FAB = (FloatingActionButton) findViewById(R.id.float_collection);
+        if (num%2==0){
+            ColorStateList colorStateList = ContextCompat.getColorStateList(getApplicationContext(),R.color.colorPrimary);
+            FAB.setBackgroundTintList(colorStateList);
+        }
         //收藏
-
+        news = DataSupport.findAll(Colltects.class);
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,13 +69,23 @@ public class BrowseNewsActivity extends AppCompatActivity {
                     ColorStateList colorStateList = ContextCompat.getColorStateList(getApplicationContext(),R.color.colorPrimary);
                     FAB.setBackgroundTintList(colorStateList);
                     num++;
-                    Colltects coll = new Colltects(title,author_name,date,content_url);
-                    coll.save();
-                    Toast.makeText(BrowseNewsActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                    for (Colltects conew:news){
+                        if (title.equals(conew.getTitle())&&author_name.equals(conew.getAuthor_name())){
+                            flag = false;
+                            Toast.makeText(BrowseNewsActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    if (flag){
+                        Colltects coll = new Colltects(title,author_name,date,content_url);
+                        coll.save();
+                        Toast.makeText(BrowseNewsActivity.this, "已收藏", Toast.LENGTH_SHORT).show();
+                    }
+
                 }else {
                     ColorStateList colorStateList = ContextCompat.getColorStateList(getApplicationContext(),R.color.colorAccent);
                     FAB.setBackgroundTintList(colorStateList);
                     num++;
+                    DataSupport.deleteAll(Colltects.class,"title = ? and author_name = ?",title,author_name);
                     Toast.makeText(BrowseNewsActivity.this, "取消收藏", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -1,5 +1,6 @@
 package com.example.simplenews;
 
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.simplenews.gson.Colltects;
@@ -34,10 +36,26 @@ public class Collection extends AppCompatActivity {
             infoActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-
+        //收藏列表
         colltectsList = DataSupport.findAll(Colltects.class);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        CollAdapter adapter = new CollAdapter(Collection.this,colltectsList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        colltectsList = DataSupport.findAll(Colltects.class);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         CollAdapter adapter = new CollAdapter(Collection.this,colltectsList);
